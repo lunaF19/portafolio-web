@@ -1,0 +1,412 @@
+/*Main Font*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Fragment+Mono&family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+
+:root {
+    scroll-behavior: smooth;
+    --color-bg: #043353;
+    --color-bg-gradient-1: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(4, 51, 83, 0.5074404761904762) 42%, rgba(4, 51, 83, 0.7343312324929971) 64%, rgba(4, 51, 83, 1) 100%);
+    --color-bg-gradient-2: linear-gradient(0deg, rgba(4, 51, 83, 1) 0%, rgba(4, 51, 83, 0.7343312324929971) 32%, rgba(4, 51, 83, 0.5074404761904762) 86%, rgba(255, 255, 255, 0) 100%);
+}
+
+* {
+    font-family: 'Roboto';
+    padding: 0px;
+    margin: 0px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disable {
+    user-select: none;
+    pointer-events: none;
+}
+
+.disableSelection {
+    user-select: none;
+}
+
+body {
+    background-image: url("../img/img-bk.webp");
+    background-position: top;
+    background-size: cover;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+section {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+}
+
+section.start {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(9, 1fr) 0.1fr;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+section.start .info {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    display: flex;
+    background: rgb(255, 255, 255);
+    background: var(--color-bg-gradient-1);
+}
+
+/* section.start .info .logo {
+    
+} */
+
+section.start .info .socia-nets {
+    position: absolute;
+    height: 70px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 1rem;
+    transition: .3s all;
+}
+
+section.start .info .socia-nets.scroll {
+    position: fixed;
+    z-index: 2;
+    animation: forUp .8s ease-in-out;
+}
+
+@keyframes forUp {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+section.start .info .socia-nets i {
+    color: rgba(255, 255, 255, 0.5);
+    transition: .5s all;
+}
+
+section.start .info .socia-nets i:hover {
+    cursor: pointer;
+    color: white;
+}
+
+/* section.start .info .socia-nets i::after:hover {
+
+} */
+section.start .principal {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    position: relative;
+    grid-column: 1/-1;
+    grid-row: 2/9;
+    
+}
+
+section.start .principal .principal-name {
+    display: flex;
+    flex-direction: column;
+}
+
+section.start .principal .principal-name .name {
+    font-size: 4rem;
+    border-bottom: 10px solid wheat;
+}
+
+
+section.start .principal .principal-name .name-footer {
+    font-size: 1rem;
+}
+
+section.start .principal div .name-footer #language {
+    font-size: 1rem;
+    position: absolute;
+    padding: 0 .5rem;
+    font-weight: 500;
+}
+
+#language {
+    /*position: absolute;*/
+    animation: changeLanguaguesVanish 3s infinite;
+
+}
+
+@keyframes changeLanguaguesVanish {
+    0% {
+        color: transparent;
+    }
+
+    20% {
+        color: rgb(255, 255, 255);
+    }
+
+    90% {
+        color: transparent;
+    }
+
+    100% {
+        color: transparent;
+    }
+}
+
+section.start .principal .principal-anything {
+    position: relative;
+    width: 30%;
+    font-size: 3rem;
+    text-align: center;
+    background-color: transparent;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+}
+
+section.start .principal .principal-anything span {
+    display: block;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    display: block;
+    font-family: 'Fragment Mono', monospace;
+    text-decoration: none;
+}
+
+/* section.start .principal .principal-anything img {
+    width: 100%;
+    padding: 10px;
+} */
+
+
+section.start nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1/-1;
+    grid-row: 9/-1;
+    background: rgb(4, 51, 83);
+    background: var(--color-bg-gradient-2);
+    transition: 0.3 all ease;
+}
+
+section.start nav.scroll {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: var(--color-bg-gradient-1);
+    padding: 1rem 0;
+    width: 100vw;
+}
+
+
+section.start nav a {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    margin: 0.8rem 0;
+    user-select: none;
+    transition: .3s all;
+
+}
+
+/* section.start nav a:hover {} */
+
+section.start nav a.active {
+    border: 1px solid white;
+
+    background-color: white;
+    color: var(--color-bg);
+}
+
+section.start nav a::after {
+    bottom: 0.2rem;
+    left: 10%;
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 0%;
+    height: .2rem;
+    transition: .3s all;
+
+}
+
+section.start nav a:hover::after {
+    width: 80%;
+}
+
+section.start nav span.navbar-log {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    font-size: 2rem;
+    transform: translateX(-1100px);
+    transition: .5s all ease-in-out;
+}
+
+section.start nav span.navbar-log.active {
+    display: flex;
+    transform: translateX(0px);
+}
+
+/* WhoIs Section */
+section.whois {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: .5fr 1fr .5fr;
+    column-gap: 2rem;
+}
+
+section.whois .title {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    font-size: 3rem;
+    align-items: bottom;
+    justify-content: center;
+    text-align: center;
+}
+
+section.whois .title span {
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+section.whois .text {
+    grid-column: 2/4;
+    grid-row: 1/-1;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* section.whois .text p {} */
+
+section.whois .image {
+    grid-column: 4/5;
+    grid-row: 2/3;
+    background-image: url("https://picsum.photos/600/300");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+
+section.experience {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: .5fr 1fr .5fr;
+    column-gap: 2rem;
+}
+
+
+section.experience .title {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    font-size: 3rem;
+    align-items: bottom;
+    justify-content: center;
+    text-align: center;
+}
+
+
+section.contact {
+    display: grid;
+
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: .5fr 1fr .5fr;
+    column-gap: 2rem;
+}
+
+
+section.contact .title {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    font-size: 3rem;
+    align-items: bottom;
+    justify-content: center;
+    text-align: center;
+}
+
+footer {
+    width: 100vw;
+    height: 20vh;
+    background: var(--color-bg);
+}
+
+/* Responsive */  
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 10px;
+    }   
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    body {
+        font-size: 11px;
+    }   
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }   
+
+    section.start .principal .principal-name .name {
+        font-size: 3rem;
+    }
+
+    section .title {
+        font-size: 1rem;
+        color: green;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+    body {
+        font-size: 14px;
+    }   
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+    body {
+        font-size: 15px;
+        /* background-image: url("../img/img-bk-rd.webp"); */
+        /* background-position: center; */
+        
+        /* background-size: cover; */
+    }   
+
+    section.start .principal { 
+        flex-direction: column;
+
+    }
+
+    section.whois {
+        display: flex;
+        flex-direction: column;
+        /* grid-template-columns: 1fr;
+        grid-template-rows: .5fr 1fr .5fr; */
+    }
+
+    section.whois .image { 
+        width: 100vw;
+        height: 50%;
+    }
+}
