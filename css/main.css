@@ -196,6 +196,7 @@ section.start nav {
     background: rgb(4, 51, 83);
     background: var(--color-bg-gradient-2);
     transition: 0.3 all ease;
+    overflow: hidden;
 }
 
 section.start nav.scroll {
@@ -206,6 +207,12 @@ section.start nav.scroll {
     padding: 1rem 0;
     width: 100vw;
 }
+
+section.start nav.scroll.full {
+    height: 100vh;
+}
+
+
 
 
 section.start nav a {
@@ -218,6 +225,26 @@ section.start nav a {
     user-select: none;
     transition: .3s all;
 
+}
+
+section.start nav .navbar-btn {
+    display: none;
+    transition: 0.3s all ease ;
+}
+
+section.start nav .navbar-btn.active {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+section.start nav.scroll.full .navbar-btn.active{
+    flex-flow: column-reverse;
+}
+
+section.start nav.scroll.full .navbar-btn.active i {
+    transform: rotate(180deg);
 }
 
 /* section.start nav a:hover {} */
@@ -238,7 +265,6 @@ section.start nav a::after {
     width: 0%;
     height: .2rem;
     transition: .3s all;
-
 }
 
 section.start nav a:hover::after {
@@ -255,8 +281,7 @@ section.start nav span.navbar-log {
 }
 
 section.start nav span.navbar-log.active {
-    display: flex;
-    transform: translateX(0px);
+    transform: translateX(100px);
 }
 
 /* WhoIs Section */
@@ -290,7 +315,7 @@ section.whois .text {
 
 /* section.whois .text p {} */
 
-section.whois .image {
+section.whois picture{
     grid-column: 4/5;
     grid-row: 2/3;
     background-image: url("https://picsum.photos/600/300");
@@ -321,7 +346,6 @@ section.experience .title {
 
 section.contact {
     display: grid;
-
     grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
     grid-template-rows: .5fr 1fr .5fr;
     column-gap: 2rem;
@@ -339,8 +363,10 @@ section.contact .title {
 
 footer {
     width: 100vw;
-    height: 20vh;
+    height: 10vh;
+    backdrop-filter: blur(10px);
     background: var(--color-bg);
+    background-color: rgba(255, 255, 255, 0.159);
 }
 
 /* Responsive */  
@@ -371,9 +397,60 @@ footer {
 
     section .title {
         font-size: 1rem;
-        color: green;
+        
     }
 
+    .principal-anything-phrase {
+        font-size: 2.5rem;
+
+    }
+
+    section.start nav.scroll {
+        height: 10vh;
+        flex-direction: column;
+        font-size: 10px;
+    }
+
+    section.start nav.scroll .navbar-btn.active {
+        display: flex;
+        min-height: 10vh;        
+    }
+
+    section.start nav.scroll.full .navbar-btn.active span {
+        content: "";
+        color: transparent;
+    }
+
+    section.start nav.scroll a, 
+    section.start nav.scroll .navbar-log {
+        display: none;
+    }
+
+    section.start nav.scroll.full a{
+        display: flex;
+        
+
+    }
+
+    section.start .info .socia-nets.center {
+        position: fixed;
+        top: 5%;
+        right: 0;
+        left: 0;
+        bottom: 0; 
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+    }
+
+    section.start .info .socia-nets.center i{
+        transform: scale(150%);
+
+    }
+
+
+    
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -381,6 +458,11 @@ footer {
     body {
         font-size: 14px;
     }   
+
+    
+    section.start nav.scroll .navbar-log {
+        display: none;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -401,11 +483,12 @@ footer {
     section.whois {
         display: flex;
         flex-direction: column;
+        flex-wrap: 10px;
         /* grid-template-columns: 1fr;
         grid-template-rows: .5fr 1fr .5fr; */
     }
 
-    section.whois .image { 
+    section.whois picture { 
         width: 100vw;
         height: 50%;
     }

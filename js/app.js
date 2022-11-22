@@ -1,8 +1,9 @@
 const $ = function (a) { return document.getElementById(a) }
 const nabvar = $("navbar")
 const logoNavbar = $("navbar-log")
-const socialNets = $("socia-net")
+const socialNets = $("socia-nets")
 
+const navbarBtn = $("navbar-btn")
 
 const sectionContact = $("contact")
 const sectionExperience = $("experience")
@@ -12,15 +13,25 @@ const sectionStart = $("start")
 let changeHast = true
 
 document.addEventListener('scroll', function (e) {
+    nabvar.classList.remove('full')
+    socialNets.classList.remove('center',)
     const scrollY = window.scrollY
     nabvar.classList.toggle('scroll', scrollY > 850)
     logoNavbar.classList.toggle('active', scrollY > 850)
     socialNets.classList.toggle('scroll', scrollY > 850)
+    navbarBtn.classList.toggle('active', scrollY > 850)
     if ( changeHast ) setLinkByScroll(scrollY)
 })
 
 document.addEventListener('DOMContentLoaded', function (e) {
     intervalLanguaes(1)
+    const disableShowNavbar = linkElement => {
+        linkElement.addEventListener('click', function (e) {
+            nabvar.classList.remove('full')
+            socialNets.classList.remove('center')
+        } )
+    }
+    forEachLinks(disableShowNavbar)
     // console.log({
     //     sectionStart: sectionStart.getBoundingClientRect(),
     //     sectionWhois: sectionWhois.getBoundingClientRect(),
@@ -32,6 +43,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 window.addEventListener('hashchange', function () {
     activeLink()
 });
+
+navbarBtn.addEventListener('click', function(e) {
+    nabvar.classList.toggle('full')
+    socialNets.classList.toggle('center')
+    
+})
 
 function setLinkByScroll(scrollY) {
 
@@ -90,6 +107,7 @@ function activeLink() {
 function forEachLinks(cb) {
     const numOfLinks = nabvar.childElementCount
     for (let i = 0; i < numOfLinks; i++) {
+        if (!nabvar.children[i].href) continue
         cb(nabvar.children[i])
     }
 }
