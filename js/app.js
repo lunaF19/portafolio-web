@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         linkElement.addEventListener('click', function (e) {
             nabvar.classList.remove('full')
             socialNets.classList.remove('center')
-            socialNets.classList.remove('full')
         } )
     }
     forEachLinks(disableShowNavbar)
@@ -55,7 +54,6 @@ window.addEventListener('hashchange', function () {
 navbarBtn.addEventListener('click', function(e) {
     nabvar.classList.toggle('full')
     socialNets.classList.toggle('center')
-    socialNets.classList.remove('full')
     
 })
 
