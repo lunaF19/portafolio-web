@@ -1,18 +1,19 @@
 /*Main Font*/
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Fragment+Mono&family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fragment+Mono&family=Montserrat:wght@300;400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
 
 :root {
     scroll-behavior: smooth;
     --color-bg: #043353;
+    --color-1: white;
     --color-bg-gradient-1: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(4, 51, 83, 0.5074404761904762) 42%, rgba(4, 51, 83, 0.7343312324929971) 64%, rgba(4, 51, 83, 1) 100%);
     --color-bg-gradient-2: linear-gradient(0deg, rgba(4, 51, 83, 1) 0%, rgba(4, 51, 83, 0.7343312324929971) 32%, rgba(4, 51, 83, 0.5074404761904762) 86%, rgba(255, 255, 255, 0) 100%);
 }
 
 * {
-    font-family: 'Roboto';
+    font-family: 'Montserrat', sans-serif;
     padding: 0px;
     margin: 0px;
-    color: white;
+    color: var(--color-1);
     box-sizing: border-box;
 }
 
@@ -100,7 +101,7 @@ section.start .info .social-nets i {
 
 section.start .info .social-nets i:hover {
     cursor: pointer;
-    color: white;
+    color: var(--color-1);
 }
 
 /* section.start .info .social-nets i::after:hover {
@@ -122,13 +123,12 @@ section.start .principal .principal-name {
 }
 
 section.start .principal .principal-name .name {
-    font-size: 4em;
+    font-size: 6em;
     border-bottom: 10px solid wheat;
 }
 
-
 section.start .principal .principal-name .name-footer {
-    font-size: 1em;
+    font-size: 2em;
 }
 
 section.start .principal div .name-footer #language {
@@ -168,7 +168,7 @@ section.start .principal .principal-anything {
     font-size: 3em;
     text-align: center;
     background-color: transparent;
-    /* border: 1px solid white; */
+    /* border: 1px solid var(--color-1); */
     border-radius: 10px;
 }
 
@@ -223,9 +223,10 @@ section.start nav .div-links a {
     position: relative;
     display: inline-block;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 3em;
     padding: 0 1em;
     margin: 0.8em auto;
+    font-weight: 500;
     user-select: none;
     text-align: center;
     transition: .3s all;
@@ -251,21 +252,22 @@ section.start nav.scroll.full .navbar-btn.active i {
 
 
 section.start nav .div-links a.active {
-    border: 1px solid white;
-    background-color: white;
+    border: 1px solid var(--color-1);
+    background-color: var(--color-1);
     color: var(--color-bg);
 }
 
-section.start nav .div-links a::after {
+/* Revisar */
+/* section.start nav .div-links a::after {
     bottom: 0.2em;
     left: 10%;
     content: "";
     position: absolute;
-    background-color: white;
+    background-color: var(--color-1);
     width: 0%;
-    height: .2em;
+    height: .1em;
     transition: .3s all;
-}
+} */
 
 section.start nav .div-links a:hover::after {
     width: 80%;
@@ -275,7 +277,7 @@ section.start nav span.navbar-log {
     position: absolute;
     left: 0;
     padding: 10px;
-    font-size: 2em;
+    font-size: 4em;
     transform: translateX(-1100px);
     transition: .5s all ease-in-out;
 }
@@ -284,81 +286,63 @@ section.start nav span.navbar-log.active {
     transform: translateX(100px);
 }
 
-/* WhoIs Section */
-section.whois {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
-    grid-template-rows: .5fr 1fr .5fr;
-    column-gap: 2em;
-}
-
-section.whois .title {
-    grid-column: 1/-1;
-    grid-row: 1/2;
-    font-size: 3em;
-    align-items: bottom;
+section.whois,
+section.experience,
+section.contact {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+section.whois .title,
+section.experience .title,
+section.contact .title {
+    font-family: 'Alfa Slab One', cursive;
+    text-align: center;
+    flex-basis: content;
+    font-size: 4em;
+    margin-top: 10vh;
+}
+
+
+section.whois .whois-container,
+section.experience .experience-container,
+section.contact .contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4em;
+
+}
+
+
+section.whois .whois-container .text {
+    width: 50%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
     text-align: center;
 }
 
-section.whois .title span {
-    margin-left: 1em;
-    font-weight: 500;
-}
 
-section.whois .text {
-    grid-column: 2/4;
-    grid-row: 1/-1;
-    font-size: 1.5em;
-    text-align: center;
-}
-
-/* section.whois .text p {} */
-
-section.whois picture {
-    grid-column: 4/5;
-    grid-row: 2/3;
-    background-image: url("https://picsum.photos/600/300");
-    background-repeat: no-repeat;
+section.whois .whois-container picture img{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.193) ;
+    /* backdrop-filter: blur(20px); */
+    /* background-image: url("https://picsum.photos/600/300"); */
+    /* background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
-
+    background-position: center; */
 }
-
 
 section.experience {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
-    grid-template-rows: .5fr 1fr .5fr;
-    column-gap: 2em;
-}
-
-
-section.experience .title {
-    grid-column: 1/-1;
-    grid-row: 1/2;
-    font-size: 3em;
-    align-items: bottom;
-    justify-content: center;
-    text-align: center;
-}
-
-
-section.contact {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
-    grid-template-rows: .5fr 1fr .5fr;
-    column-gap: 2em;
-}
-
-
-section.contact .title {
-    grid-column: 1/-1;
-    grid-row: 1/2;
-    font-size: 3em;
-    align-items: bottom;
-    justify-content: center;
-    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 footer {
@@ -370,14 +354,14 @@ footer {
 }
 
 footer .footer-message {
-    border-top: 10px solid white;
+    border-top: 10px solid var(--color-1);
     height: 100%;
     width: 50%;
     font-size: 1.5em;
 }
 
 footer .footer-vitae-dowload {
-    border-top: 10px solid white;
+    border-top: 10px solid var(--color-1);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -386,7 +370,7 @@ footer .footer-vitae-dowload {
     height: 100%;
     width: 50%;
     align-self: center;
-    background-color: white;
+    background-color: var(--color-1);
     cursor: pointer;
 
 }
@@ -425,14 +409,14 @@ footer .footer-vitae-dowload:hover i {
         font-size: 10px;
     }
 
-    section.start  nav .div-links a:nth-child(1n){
+    section.start nav .div-links a:nth-child(1n) {
         display: none;
     }
 
-    section.start  nav .div-links a:nth-child(1){
+    section.start nav .div-links a:nth-child(1) {
         display: inline-block;
     }
-    
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -441,7 +425,7 @@ footer .footer-vitae-dowload:hover i {
         font-size: 11px;
     }
 
-    
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -456,6 +440,7 @@ footer .footer-vitae-dowload:hover i {
 
     section .title {
         font-size: 1em;
+        color: green;
     }
 
     .principal-anything-phrase {
@@ -516,6 +501,7 @@ footer .footer-vitae-dowload:hover i {
         transform: none;
 
     }
+
     section.start nav.scroll.full .navbar-btn i:nth-child(1n) {
         display: none;
     }
@@ -534,7 +520,7 @@ footer .footer-vitae-dowload:hover i {
         justify-content: center;
         align-items: center;
         gap: 3rem;
-        
+
 
     }
 
@@ -573,16 +559,35 @@ footer .footer-vitae-dowload:hover i {
 
     }
 
-    section.whois {
+    section .title {
+        margin: 10vh auto;
+    }
+
+    section.whois .whois-container {
         display: flex;
         flex-direction: column;
-        flex-wrap: 10px;
+        /* flex-wrap: 10px; */
         /* grid-template-columns: 1fr;
         grid-template-rows: .5fr 1fr .5fr; */
     }
 
+    section.whois .whois-container .text {
+        width: 100%;
+    }
+
+    section.whois .whois-container .text p {
+
+        width: 80%;
+    }
+
+
+    section.start nav .div-links a {
+        font-size: 2em;
+    }
+
+    /* 
     section.whois picture {
         width: 100vw;
         height: 50%;
-    }
+    } */
 }
