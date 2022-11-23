@@ -168,7 +168,6 @@ section.start .principal .principal-anything {
     font-size: 3em;
     text-align: center;
     background-color: transparent;
-    /* border: 1px solid var(--color-1); */
     border-radius: 10px;
 }
 
@@ -212,6 +211,7 @@ section.start nav.scroll {
 section.start nav.scroll.full {
     background-color: var(--color-bg-gradient-3);
     height: 100vh;
+    width: 100vw;
     backdrop-filter: blur(5px);
 }
 
@@ -330,10 +330,10 @@ section.whois .whois-container .text {
 }
 
 
-section.whois .whois-container picture img{
+section.whois .whois-container picture img {
     border-radius: 10px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.193) ;
+    background-color: rgba(255, 255, 255, 0.193);
     /* backdrop-filter: blur(20px); */
     /* background-image: url("https://picsum.photos/600/300"); */
     /* background-repeat: no-repeat;
@@ -417,14 +417,95 @@ footer .footer-vitae-dowload:hover i {
         display: inline-block;
     }
 
-}
+    section.start .principal .principal-anything .principal-anything-phrase {}
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    body {
-        font-size: 11px;
+    section.start .principal .principal-anything {
+        width: 100%;
     }
 
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+    body {
+        font-size: 15px;
+        /* background-image: url("../img/img-bk-rd.webp"); */
+        /* background-position: center; */
+
+        /* background-size: cover; */
+    }
+
+
+    section.start nav.scroll .navbar-log {
+        display: none;
+        /* display: none; */
+    }
+
+    section.start .principal {
+        flex-direction: column;
+
+    }
+
+    section.start .principal .principal-anything {
+        width: 50%;
+        flex-basis: content;
+    }
+
+    section.start .principal .principal-anything .principal-anything-phrase {
+        width: 100%;
+    }
+
+
+    section .title {
+        margin: 10vh auto;
+    }
+
+    section.whois .whois-container {
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: 10px; */
+        /* grid-template-columns: 1fr;
+        grid-template-rows: .5fr 1fr .5fr; */
+    }
+
+    section.whois .whois-container .text {
+        width: 100%;
+    }
+
+    section.whois .whois-container .text p {
+
+        width: 80%;
+    }
+
+
+    section.start nav .div-links a {
+        font-size: 1.7em;
+    }
+
+    /* 
+    section.whois picture {
+        width: 100vw;
+        height: 50%;
+    } */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+    body {
+        font-size: 14px;
+    }
+
+    section.start .principal .principal-name .name {
+        font-size: 3em;
+    }
+
+    section.start .principal .principal-name .name-footer {
+        font-size: 1em;
+    }
+
+    section.start .principal .principal-anything .principal-anything-phrase {
+        font-size: .7em;
+    }
 
 }
 
@@ -434,17 +515,10 @@ footer .footer-vitae-dowload:hover i {
         font-size: 13px;
     }
 
-    section.start .principal .principal-name .name {
-        font-size: 3em;
-    }
 
-    section .title {
-        font-size: 1em;
-        color: green;
-    }
+    section.experience .title {
+        font-size: 2em;
 
-    .principal-anything-phrase {
-        font-size: .8em;
     }
 
     section.start nav.scroll {
@@ -532,62 +606,13 @@ footer .footer-vitae-dowload:hover i {
 
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
     body {
-        font-size: 14px;
+        font-size: 11px;
     }
 
 
-    section.start nav.scroll .navbar-log {
-        display: none;
-    }
-}
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (max-width: 1200px) {
-    body {
-        font-size: 15px;
-        /* background-image: url("../img/img-bk-rd.webp"); */
-        /* background-position: center; */
-
-        /* background-size: cover; */
-    }
-
-    section.start .principal {
-        flex-direction: column;
-
-    }
-
-    section .title {
-        margin: 10vh auto;
-    }
-
-    section.whois .whois-container {
-        display: flex;
-        flex-direction: column;
-        /* flex-wrap: 10px; */
-        /* grid-template-columns: 1fr;
-        grid-template-rows: .5fr 1fr .5fr; */
-    }
-
-    section.whois .whois-container .text {
-        width: 100%;
-    }
-
-    section.whois .whois-container .text p {
-
-        width: 80%;
-    }
-
-
-    section.start nav .div-links a {
-        font-size: 2em;
-    }
-
-    /* 
-    section.whois picture {
-        width: 100vw;
-        height: 50%;
-    } */
 }
