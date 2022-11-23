@@ -1,5 +1,6 @@
 const $ = function (a) { return document.getElementById(a) }
 const nabvar = $("navbar")
+const divLinks = $("div-links")
 const logoNavbar = $("navbar-log")
 const socialNets = $("socia-nets")
 
@@ -9,6 +10,12 @@ const sectionContact = $("contact")
 const sectionExperience = $("experience")
 const sectionWhois = $("whois")
 const sectionStart = $("start")
+
+
+const footerVitaeDowload = $("footer-vitae-dowload")
+const dowloadPdfLink = $("dowload-pdf-link")
+
+
 
 let changeHast = true
 
@@ -48,6 +55,10 @@ navbarBtn.addEventListener('click', function(e) {
     nabvar.classList.toggle('full')
     socialNets.classList.toggle('center')
     
+})
+
+footerVitaeDowload.addEventListener('click', function(){
+    dowloadPdfLink.click()
 })
 
 function setLinkByScroll(scrollY) {
@@ -105,9 +116,9 @@ function activeLink() {
 }
 
 function forEachLinks(cb) {
-    const numOfLinks = nabvar.childElementCount
+    const numOfLinks = divLinks.childElementCount
     for (let i = 0; i < numOfLinks; i++) {
-        if (!nabvar.children[i].href) continue
-        cb(nabvar.children[i])
+        if (!divLinks.children[i].href) continue
+        cb(divLinks.children[i])
     }
 }

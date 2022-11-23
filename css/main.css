@@ -6,6 +6,8 @@
     --color-bg: #043353;
     --color-bg-gradient-1: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(4, 51, 83, 0.5074404761904762) 42%, rgba(4, 51, 83, 0.7343312324929971) 64%, rgba(4, 51, 83, 1) 100%);
     --color-bg-gradient-2: linear-gradient(0deg, rgba(4, 51, 83, 1) 0%, rgba(4, 51, 83, 0.7343312324929971) 32%, rgba(4, 51, 83, 0.5074404761904762) 86%, rgba(255, 255, 255, 0) 100%);
+    --color-bg-gradient-3: radial-gradient(#c80000, rgb(210, 0, 0));
+    --color-bg-gradient-4: red;
 }
 
 * {
@@ -87,6 +89,7 @@ section.start .info .socia-nets.scroll {
     0% {
         transform: translateY(20px);
     }
+
     100% {
         transform: translateY(0px);
     }
@@ -112,7 +115,7 @@ section.start .principal {
     position: relative;
     grid-column: 1/-1;
     grid-row: 2/9;
-    
+
 }
 
 section.start .principal .principal-name {
@@ -195,8 +198,8 @@ section.start nav {
     grid-row: 9/-1;
     background: rgb(4, 51, 83);
     background: var(--color-bg-gradient-2);
-    transition: 0.3 all ease;
     overflow: hidden;
+    transition: .3s all ease;
 }
 
 section.start nav.scroll {
@@ -209,27 +212,31 @@ section.start nav.scroll {
 }
 
 section.start nav.scroll.full {
+    background-color: var(--color-bg-gradient-3);
     height: 100vh;
+    backdrop-filter: blur(5px);
 }
 
+section.start nav .div-links {
+    all: none;
+}
 
-
-
-section.start nav a {
+section.start nav .div-links a {
     position: relative;
     display: inline-block;
+    text-decoration: none;
     font-size: 2rem;
     padding: 0 1rem;
-    text-decoration: none;
-    margin: 0.8rem 0;
+    margin: 0.8rem auto;
     user-select: none;
+    text-align: center;
     transition: .3s all;
 
 }
 
 section.start nav .navbar-btn {
     display: none;
-    transition: 0.3s all ease ;
+    transition: 0.3s all;
 }
 
 section.start nav .navbar-btn.active {
@@ -239,24 +246,20 @@ section.start nav .navbar-btn.active {
     font-size: 1rem;
 }
 
-section.start nav.scroll.full .navbar-btn.active{
-    flex-flow: column-reverse;
-}
 
 section.start nav.scroll.full .navbar-btn.active i {
     transform: rotate(180deg);
 }
 
-/* section.start nav a:hover {} */
 
-section.start nav a.active {
+section.start nav .div-links a.active {
     border: 1px solid white;
 
     background-color: white;
     color: var(--color-bg);
 }
 
-section.start nav a::after {
+section.start nav .div-links a::after {
     bottom: 0.2rem;
     left: 10%;
     content: "";
@@ -267,7 +270,7 @@ section.start nav a::after {
     transition: .3s all;
 }
 
-section.start nav a:hover::after {
+section.start nav .div-links a:hover::after {
     width: 80%;
 }
 
@@ -315,7 +318,7 @@ section.whois .text {
 
 /* section.whois .text p {} */
 
-section.whois picture{
+section.whois picture {
     grid-column: 4/5;
     grid-row: 2/3;
     background-image: url("https://picsum.photos/600/300");
@@ -364,32 +367,80 @@ section.contact .title {
 footer {
     width: 100vw;
     height: 10vh;
-    backdrop-filter: blur(10px);
-    background: var(--color-bg);
-    background-color: rgba(255, 255, 255, 0.159);
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-bg);
 }
 
-/* Responsive */  
+footer .footer-message {
+    border-top: 10px solid white;
+    height: 100%;
+    width: 50%;
+    font-size: 1.5rem;
+}
+
+footer .footer-vitae-dowload {
+    border-top: 10px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    width: 50%;
+    align-self: center;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+footer .footer-vitae-dowload p {
+    font-weight: 700;
+    display: flex;
+    color: var(--color-bg);
+    font-size: 1.5rem;
+    transition: 0.3s all;
+}
+
+footer .footer-vitae-dowload i {
+    color: var(--color-bg);
+    transition: 0.3s all;
+
+}
+
+footer .footer-vitae-dowload:hover p {
+    display: none;
+}
+
+footer .footer-vitae-dowload:hover i {
+    transform: scale(200%);
+}
+
+#dowload-pdf-link {
+    display: none;
+}
+
+/* Responsive */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     body {
         font-size: 10px;
-    }   
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     body {
         font-size: 11px;
-    }   
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
     body {
         font-size: 13px;
-    }   
+    }
 
     section.start .principal .principal-name .name {
         font-size: 3rem;
@@ -397,7 +448,7 @@ footer {
 
     section .title {
         font-size: 1rem;
-        
+
     }
 
     .principal-anything-phrase {
@@ -413,23 +464,50 @@ footer {
 
     section.start nav.scroll .navbar-btn.active {
         display: flex;
-        min-height: 10vh;        
+        min-height: 10vh;
+    }
+    section.start nav.scroll .navbar-btn {
+        left: 0;
+
     }
 
-    section.start nav.scroll.full .navbar-btn.active span {
-        content: "";
-        color: transparent;
+    section.start nav.scroll .navbar-btn i:nth-child(1n) {
+        transform: scale(150%);
+        display: flex;
     }
 
-    section.start nav.scroll a, 
+    section.start nav.scroll .navbar-btn i:nth-child(2n) {
+        display: none;
+    }
+
+
+    section.start nav.scroll .div-links a,
     section.start nav.scroll .navbar-log {
         display: none;
     }
 
-    section.start nav.scroll.full a{
+    section.start nav.scroll.full .div-links {
         display: flex;
-        
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
+    section.start nav.scroll.full .div-links a {
+        display: inline-block;
+    }
+
+    section.start nav.scroll.full {
+        flex-direction: column-reverse;
+    }
+
+    section.start nav.scroll.full .navbar-btn i:nth-child(1n) {
+        display: none;
+    }
+
+    section.start nav.scroll.full .navbar-btn i:nth-child(2n) {
+        display: flex;
+        transform: scale(150%);
     }
 
     section.start .info .socia-nets.center {
@@ -437,29 +515,29 @@ footer {
         top: 5%;
         right: 0;
         left: 0;
-        bottom: 0; 
+        bottom: 0;
         justify-content: center;
         align-items: center;
         gap: 2rem;
 
     }
 
-    section.start .info .socia-nets.center i{
+    section.start .info .socia-nets.center i {
         transform: scale(150%);
 
     }
 
 
-    
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
     body {
         font-size: 14px;
-    }   
+    }
 
-    
+
     section.start nav.scroll .navbar-log {
         display: none;
     }
@@ -471,11 +549,11 @@ footer {
         font-size: 15px;
         /* background-image: url("../img/img-bk-rd.webp"); */
         /* background-position: center; */
-        
-        /* background-size: cover; */
-    }   
 
-    section.start .principal { 
+        /* background-size: cover; */
+    }
+
+    section.start .principal {
         flex-direction: column;
 
     }
@@ -488,7 +566,7 @@ footer {
         grid-template-rows: .5fr 1fr .5fr; */
     }
 
-    section.whois picture { 
+    section.whois picture {
         width: 100vw;
         height: 50%;
     }
