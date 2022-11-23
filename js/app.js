@@ -2,7 +2,7 @@ const $ = function (a) { return document.getElementById(a) }
 const nabvar = $("navbar")
 const divLinks = $("div-links")
 const logoNavbar = $("navbar-log")
-const socialNets = $("socia-nets")
+const socialNets = $("social-nets")
 
 const navbarBtn = $("navbar-btn")
 
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         linkElement.addEventListener('click', function (e) {
             nabvar.classList.remove('full')
             socialNets.classList.remove('center')
+            socialNets.classList.remove('full')
         } )
     }
     forEachLinks(disableShowNavbar)
@@ -54,6 +55,7 @@ window.addEventListener('hashchange', function () {
 navbarBtn.addEventListener('click', function(e) {
     nabvar.classList.toggle('full')
     socialNets.classList.toggle('center')
+    socialNets.classList.remove('full')
     
 })
 
