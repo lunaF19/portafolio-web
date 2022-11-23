@@ -426,6 +426,14 @@ footer .footer-vitae-dowload:hover i {
     body {
         font-size: 10px;
     }
+
+    section.start  nav .div-links a:nth-child(1n){
+        display: none;
+    }
+
+    section.start  nav .div-links a:nth-child(1){
+        display: inline-block;
+    }
     
 }
 
@@ -434,6 +442,8 @@ footer .footer-vitae-dowload:hover i {
     body {
         font-size: 11px;
     }
+
+    
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -464,8 +474,12 @@ footer .footer-vitae-dowload:hover i {
         display: flex;
         min-height: 10vh;
     }
+
     section.start nav.scroll .navbar-btn {
+        position: fixed;
+        width: 20vw;
         left: 0;
+        top: 0;
     }
 
     section.start nav.scroll .navbar-btn i:nth-child(1n) {
@@ -490,6 +504,7 @@ footer .footer-vitae-dowload:hover i {
     }
 
     section.start nav.scroll.full .div-links a {
+        font-size: 3em;
         display: inline-block;
     }
 
@@ -497,6 +512,10 @@ footer .footer-vitae-dowload:hover i {
         flex-direction: column-reverse;
     }
 
+    section.start nav.scroll.full .navbar-btn {
+        position: relative;
+
+    }
     section.start nav.scroll.full .navbar-btn i:nth-child(1n) {
         display: none;
     }
@@ -520,7 +539,6 @@ footer .footer-vitae-dowload:hover i {
 
     section.start .info .socia-nets.center i {
         transform: scale(150%);
-
     }
 
 
