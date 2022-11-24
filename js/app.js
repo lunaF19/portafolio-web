@@ -11,14 +11,17 @@ const sectionExperience = $("experience")
 const sectionWhois = $("whois")
 const sectionStart = $("start")
 
+
 const footerVitaeDowload = $("footer-vitae-dowload")
 const dowloadPdfLink = $("dowload-pdf-link")
+
+
 
 let changeHast = true
 
 document.addEventListener('scroll', function (e) {
     nabvar.classList.remove('full')
-    socialNets.classList.remove('center')
+    socialNets.classList.remove('center',)
     const scrollY = window.scrollY
     nabvar.classList.toggle('scroll', scrollY > 850)
     logoNavbar.classList.toggle('active', scrollY > 850)
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         linkElement.addEventListener('click', function (e) {
             nabvar.classList.remove('full')
             socialNets.classList.remove('center')
+           
         } )
     }
     forEachLinks(disableShowNavbar)
@@ -51,6 +55,7 @@ window.addEventListener('hashchange', function () {
 navbarBtn.addEventListener('click', function(e) {
     nabvar.classList.toggle('full')
     socialNets.classList.toggle('center')
+    socialNets.classList.remove('full')
     
 })
 

@@ -53,6 +53,8 @@ section.start {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(9, 1fr) 0.1fr;
     background-color: rgba(255, 255, 255, 0.2);
+    min-height: 100vh;
+    max-height: 100vh;
 }
 
 section.start .info {
@@ -180,12 +182,6 @@ section.start .principal .principal-anything span {
     text-decoration: none;
 }
 
-/* section.start .principal .principal-anything img {
-    width: 100%;
-    padding: 10px;
-} */
-
-
 section.start nav {
     position: relative;
     display: flex;
@@ -230,7 +226,6 @@ section.start nav .div-links a {
     user-select: none;
     text-align: center;
     transition: .3s all;
-
 }
 
 section.start nav .navbar-btn {
@@ -330,6 +325,13 @@ section.whois .whois-container .text {
 }
 
 
+section.whois .whois-container picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 section.whois .whois-container picture img {
     border-radius: 10px;
     padding: 10px;
@@ -401,40 +403,9 @@ footer .footer-vitae-dowload:hover i {
     display: none;
 }
 
-/* Responsive */
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 10px;
-    }
-
-    section.start nav .div-links a:nth-child(1n) {
-        display: none;
-    }
-
-    section.start nav .div-links a:nth-child(1) {
-        display: inline-block;
-    }
-
-    section.start .principal .principal-anything .principal-anything-phrase {}
-
-    section.start .principal .principal-anything {
-        width: 100%;
-    }
-
-}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1200px) {
-    body {
-        font-size: 15px;
-        /* background-image: url("../img/img-bk-rd.webp"); */
-        /* background-position: center; */
-
-        /* background-size: cover; */
-    }
-
 
     section.start nav.scroll .navbar-log {
         display: none;
@@ -473,52 +444,38 @@ footer .footer-vitae-dowload:hover i {
     }
 
     section.whois .whois-container .text p {
-
         width: 80%;
     }
 
 
     section.start nav .div-links a {
-        font-size: 1.7em;
+        font-size: 2.5em;
     }
 
-    /* 
-    section.whois picture {
-        width: 100vw;
-        height: 50%;
-    } */
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
-    body {
-        font-size: 14px;
-    }
 
     section.start .principal .principal-name .name {
-        font-size: 3em;
+        /* font-size: 3em; */
     }
 
     section.start .principal .principal-name .name-footer {
-        font-size: 1em;
+        /* font-size: 1em; */
     }
 
     section.start .principal .principal-anything .principal-anything-phrase {
-        font-size: .7em;
+        /* font-size: .7em; */
     }
 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
-    body {
-        font-size: 13px;
-    }
-
 
     section.experience .title {
         font-size: 2em;
-
     }
 
     section.start nav.scroll {
@@ -573,7 +530,6 @@ footer .footer-vitae-dowload:hover i {
     section.start nav.scroll.full .navbar-btn {
         position: relative;
         transform: none;
-
     }
 
     section.start nav.scroll.full .navbar-btn i:nth-child(1n) {
@@ -594,15 +550,11 @@ footer .footer-vitae-dowload:hover i {
         justify-content: center;
         align-items: center;
         gap: 3rem;
-
-
     }
 
     section.start .info .social-nets.center i {
         transform: scale(150%);
     }
-
-
 
 }
 
@@ -613,6 +565,44 @@ footer .footer-vitae-dowload:hover i {
         font-size: 11px;
     }
 
+    section.start .principal .principal-name .name {
+        /* color: green; */
+        /* font-size: 2em;  */
+    }
+
+    section.start .principal .principal-name .name-footer {
+        /* font-size: 1em; */
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    body {
+        font-size: 11px;
+    }
+
+    section.whois .whois-container picture img {
+
+        width: 50%;
+    }
+
+    section.start nav .div-links a:nth-child(1n) {
+        display: none;
+    }
+
+    /* section.start nav .div-links a:nth-child(1) {
+        display: inline-block;
+    } */
+
+    section.start .principal .principal-anything {
+        width: 100%;
+    }
+
+    section.start .principal .principal-name .name {
+        font-size: 4em;
+    }
 
 
 }
