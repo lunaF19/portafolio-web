@@ -1,93 +1,72 @@
 const $ = function (a) { return document.getElementById(a) }
-const nabvar = $("navbar")
+
+const observerHTML = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entrie => {
+        console.log(entrie)
+        if (entrie.isIntersecting) {
+            const id = entrie.target.id
+            console.log(`#${id}`)
+            window.location.hash = `#${id}`;
+        }
+    })
+}, {
+    root: document,
+    threshold: 1,
+    rootMargin: '0px 0px 20% 0px'
+})
+
+// NavBar
+const navbar = $("navbar")
+const navbarBtn = $("navbar-btn")
 const divLinks = $("div-links")
 const logoNavbar = $("navbar-log")
+
+const sections = document.querySelectorAll('section')
+console.log(sections)
+sections.forEach(section => { observerHTML.observe(section) })
+
+// 
 const socialNets = $("social-nets")
 
-const navbarBtn = $("navbar-btn")
-
-const sectionContact = $("contact")
-const sectionExperience = $("experience")
-const sectionWhois = $("whois")
-const sectionStart = $("start")
-
-
+// footer
 const footerVitaeDowload = $("footer-vitae-dowload")
 const dowloadPdfLink = $("dowload-pdf-link")
 
-
-
-let changeHast = true
-
-document.addEventListener('scroll', function (e) {
-    nabvar.classList.remove('full')
-    socialNets.classList.remove('center',)
-    const scrollY = window.scrollY
-    nabvar.classList.toggle('scroll', scrollY > 850)
-    logoNavbar.classList.toggle('active', scrollY > 850)
-    socialNets.classList.toggle('scroll', scrollY > 850)
-    navbarBtn.classList.toggle('active', scrollY > 850)
-    if ( changeHast ) setLinkByScroll(scrollY)
-})
-
 document.addEventListener('DOMContentLoaded', function (e) {
     intervalLanguaes(1)
+    // Init observers with sections
+   
+
     const disableShowNavbar = linkElement => {
         linkElement.addEventListener('click', function (e) {
-            nabvar.classList.remove('full')
+            navbar.classList.remove('full')
             socialNets.classList.remove('center')
-           
-        } )
+        })
     }
     forEachLinks(disableShowNavbar)
-    // console.log({
-    //     sectionStart: sectionStart.getBoundingClientRect(),
-    //     sectionWhois: sectionWhois.getBoundingClientRect(),
-    //     sectionExperience: sectionExperience.getBoundingClientRect(),
-    //     sectionContact: sectionContact.getBoundingClientRect(),
-    // })
 })
 
-window.addEventListener('hashchange', function () {
-    activeLink()
-});
 
-navbarBtn.addEventListener('click', function(e) {
-    nabvar.classList.toggle('full')
+document.addEventListener('scroll', function (e) {
+    navbar.classList.remove('full')
+    socialNets.classList.remove('center')
+
+    const navbarVisible = (($("whois").getBoundingClientRect().top) <= 0)
+    navbar.classList.toggle('scroll', navbarVisible)
+    navbarBtn.classList.toggle('active', navbarVisible)
+    socialNets.classList.toggle('scroll', navbarVisible)
+
+})
+
+window.addEventListener('hashchange', function () { activeLink() });
+
+navbarBtn.addEventListener('click', function (e) {
+    navbar.classList.toggle('full')
     socialNets.classList.toggle('center')
     socialNets.classList.remove('full')
-    
 })
 
-footerVitaeDowload.addEventListener('click', function(){
-    dowloadPdfLink.click()
-})
-
-function setLinkByScroll(scrollY) {
-
-    if ((sectionStart.getBoundingClientRect().bottom) >= 0) {
-        if (!window.location.href.includes("#start")) window.location.href = "#start"
-        return;
-    }
-
-    if ((sectionWhois.getBoundingClientRect().bottom) >= 0) {
-        if (!window.location.href.includes("#whois")) window.location.href = "#whois"
-        return;
-    }
-
-    if ((sectionExperience.getBoundingClientRect().bottom) >= 0) {
-        if (!window.location.href.includes("#experience")) window.location.href = "#experience"
-        return;
-    }
-
-    if ((sectionContact.getBoundingClientRect().bottom) >= 0) {
-        if (!window.location.href.includes("#contact")) window.location.href = "#contact"
-        return;
-    }
-
-
-
-}
+footerVitaeDowload.addEventListener('click', function () { dowloadPdfLink.click() })
 
 function intervalLanguaes(num) {
     const languages = ["BackEnd", "Express JS", "Oracle Pl/SQL", "FrontEnd", "React JS",]
@@ -102,25 +81,26 @@ function intervalLanguaes(num) {
 
 }
 
+function manageNavBar() {
+    const hasLink = window.location.hash
+    const navbarActive = ["#whois", "#experience", "#contact"].includes(hasLink)
+    navbar.classList.toggle('scroll', navbarActive)
+    socialNets.classList.toggle('scroll', navbarActive)
+    navbarBtn.classList.toggle('active', navbarActive)
+}
 
 function activeLink() {
-    if ( changeHast ) {
-        const removeActive = (linkElement) => {
-            linkElement.classList.toggle("active", linkElement.href === window.location.href)
-        }
-        forEachLinks(removeActive)
-        changeHast = false 
-        setTimeout( () => {
-            changeHast = true
-        },1000)
+    //manageNavBar()
+    
+    const removeActive = (linkElement) => {
+        linkElement.classList.toggle("active", linkElement.href === window.location.href)
     }
-
+    forEachLinks(removeActive)
 }
 
 function forEachLinks(cb) {
-    const numOfLinks = divLinks.childElementCount
-    for (let i = 0; i < numOfLinks; i++) {
-        if (!divLinks.children[i].href) continue
-        cb(divLinks.children[i])
+    for (const child of document.querySelectorAll('#div-links')[0].children) {
+        if (!child.href) continue
+        cb(child)
     }
 }
