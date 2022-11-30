@@ -137,17 +137,18 @@ section.start .principal .principal-name .name {
 }
 
 section.start .principal .principal-name .name-footer {
+    display: flex;
     font-size: 2em;
 }
 
-section.start .principal div .name-footer #language {
+section.start .principal div .name-footer #language span{
     font-size: 1em;
     position: absolute;
     padding: 0 .5em;
     font-weight: 500;
 }
 
-#language {
+#language span{
     /*position: absolute;*/
     animation: changeLanguaguesVanish 3s infinite;
 
@@ -355,6 +356,43 @@ section.whois .whois-container picture img {
 section.experience {
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+section.experience .experience-container {
+    display: grid;
+    width: 80%;
+    min-height: 50vh;
+    grid-template-columns: .5fr repeat(5, 1fr) .5fr ;
+    /* grid-template-rows: span; */
+}
+
+section.experience .experience-container-prev {
+    grid-column: 1/2;
+    grid-row: span;
+}
+
+section.experience .experience-container-next {
+    grid-column: 6/-1;
+    grid-row: span;
+}
+
+
+section.experience .experience-container .carousel-experience { 
+    grid-column: span;
+    
+}
+
+section.experience .experience-container .carousel-experience .card-experience-img { 
+    
+}
+
+section.experience .experience-container .carousel-experience .card-experience-title { 
+    
+}
+section.experience .experience-container .carousel-experience .card-experience-paragraph{ 
+
+}
+
+
 
 footer {
     width: 100vw;

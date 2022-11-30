@@ -2,16 +2,14 @@ const $ = function (a) { return document.getElementById(a) }
 
 const observerHTML = new IntersectionObserver((entries, observer) => {
     entries.forEach(entrie => {
-        console.log(entrie)
         if (entrie.isIntersecting) {
             const id = entrie.target.id
-            console.log(`#${id}`)
             window.location.hash = `#${id}`;
         }
     })
 }, {
     root: document,
-    threshold: 1,
+    threshold: .9,
     rootMargin: '0px 0px 20% 0px'
 })
 
@@ -22,7 +20,6 @@ const divLinks = $("div-links")
 const logoNavbar = $("navbar-log")
 
 const sections = document.querySelectorAll('section')
-console.log(sections)
 sections.forEach(section => { observerHTML.observe(section) })
 
 // 
@@ -69,11 +66,19 @@ navbarBtn.addEventListener('click', function (e) {
 footerVitaeDowload.addEventListener('click', function () { dowloadPdfLink.click() })
 
 function intervalLanguaes(num) {
+    const laguageElement = $("language")
     const languages = ["BackEnd", "Express JS", "Oracle Pl/SQL", "FrontEnd", "React JS",]
     if (num > languages.length) num = 1
     if (num < 1) num = 1
+    const spanLanguage = document.createElement('span')
+    spanLanguage.innerHTML = `${languages[num - 1]}`
 
-    $("language").innerHTML = ` ${languages[num - 1]}`
+    for ( const child of laguageElement.childNodes) {
+        laguageElement.removeChild(child)
+
+    }
+    laguageElement.appendChild(spanLanguage)
+//     = ` ${languages[num - 1]}`
 
     setTimeout(() => {
         intervalLanguaes(num + 1)
