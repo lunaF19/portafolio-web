@@ -1,4 +1,4 @@
-const $ = function (a) { return document.getElementById(a) }
+const $ = function (a, all = false) { return !all ? document.querySelector(a) : document.querySelectorAll(a) }
 
 const observerHTML = new IntersectionObserver((entries, observer) => {
     entries.forEach(entrie => {
@@ -9,30 +9,37 @@ const observerHTML = new IntersectionObserver((entries, observer) => {
     })
 }, {
     root: document,
-    threshold: .9,
+    threshold: .5,
     rootMargin: '0px 0px 20% 0px'
 })
 
 // NavBar
-const navbar = $("navbar")
-const navbarBtn = $("navbar-btn")
-const divLinks = $("div-links")
-const logoNavbar = $("navbar-log")
+const navbar = $("#navbar")
+const navbarBtn = $("#navbar-btn")
+const divLinks = $("#div-links")
+const logoNavbar = $("#navbar-log")
 
 const sections = document.querySelectorAll('section')
 sections.forEach(section => { observerHTML.observe(section) })
 
 // 
-const socialNets = $("social-nets")
+const socialNets = $("#social-nets")
 
 // footer
-const footerVitaeDowload = $("footer-vitae-dowload")
-const dowloadPdfLink = $("dowload-pdf-link")
+const footerVitaeDowload = $("#footer-vitae-dowload")
+const dowloadPdfLink = $("#dowload-pdf-link")
+
+// carrousell
+const btnPrev = $(".experience-container-prev")
+const btnNext = $(".experience-container-next")
+const carouselExperience = $(".carousel-experience")
+const cardCarouselExperience = $(".carousel-experience-card", true)
+
+btnNext.addEventListener("click", carouselNext)
+btnPrev.addEventListener("click", carouselPrev)
 
 document.addEventListener('DOMContentLoaded', function (e) {
     intervalLanguaes(1)
-    // Init observers with sections
-   
 
     const disableShowNavbar = linkElement => {
         linkElement.addEventListener('click', function (e) {
@@ -43,12 +50,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
     forEachLinks(disableShowNavbar)
 })
 
-
 document.addEventListener('scroll', function (e) {
     navbar.classList.remove('full')
     socialNets.classList.remove('center')
 
-    const navbarVisible = (($("whois").getBoundingClientRect().top) <= 0)
+    const navbarVisible = (($("#whois").getBoundingClientRect().top) <= 0)
     navbar.classList.toggle('scroll', navbarVisible)
     navbarBtn.classList.toggle('active', navbarVisible)
     socialNets.classList.toggle('scroll', navbarVisible)
@@ -61,24 +67,39 @@ navbarBtn.addEventListener('click', function (e) {
     navbar.classList.toggle('full')
     socialNets.classList.toggle('center')
     socialNets.classList.remove('full')
+
 })
 
 footerVitaeDowload.addEventListener('click', function () { dowloadPdfLink.click() })
 
+
+function carouselNext() {
+    const firstCard = $(".carousel-experience-card", true)[0]
+    carouselExperience.insertAdjacentElement('beforeend', firstCard)
+}
+
+function carouselPrev() {
+    const card = $(".carousel-experience-card", true)
+    const lastCard = card[card.length - 1]
+    carouselExperience.insertAdjacentElement('afterbegin', lastCard)
+}
+
+// setInterval(() => carouselNext(), 5000)
+
 function intervalLanguaes(num) {
-    const laguageElement = $("language")
+    const laguageElement = $("#language")
     const languages = ["BackEnd", "Express JS", "Oracle Pl/SQL", "FrontEnd", "React JS",]
     if (num > languages.length) num = 1
     if (num < 1) num = 1
     const spanLanguage = document.createElement('span')
     spanLanguage.innerHTML = `${languages[num - 1]}`
 
-    for ( const child of laguageElement.childNodes) {
+    for (const child of laguageElement.childNodes) {
         laguageElement.removeChild(child)
 
     }
     laguageElement.appendChild(spanLanguage)
-//     = ` ${languages[num - 1]}`
+    //     = ` ${languages[num - 1]}`
 
     setTimeout(() => {
         intervalLanguaes(num + 1)
@@ -96,10 +117,12 @@ function manageNavBar() {
 
 function activeLink() {
     //manageNavBar()
-    
+
     const removeActive = (linkElement) => {
-        linkElement.classList.toggle("active", linkElement.href === window.location.href)
+        const isActiveLink = Boolean(linkElement.href === window.location.href)
+        linkElement.classList.toggle("active", isActiveLink)
     }
+
     forEachLinks(removeActive)
 }
 
