@@ -192,6 +192,7 @@ section.start .principal .principal-anything span {
     display: block;
     padding: 1em;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     font-family: 'Fragment Mono', monospace;
     text-decoration: none;
 }
@@ -224,6 +225,7 @@ section.start nav.scroll.full {
     height: 100vh;
     width: 100vw;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     z-index: 2;
 }
 
@@ -425,6 +427,7 @@ section.experience .experience-container .carousel-experience {
     z-index: 1;
     position: relative;
     backdrop-filter: blur(2px) ;
+    -webkit-backdrop-filter: blur(2px) ;
 }
 
 
