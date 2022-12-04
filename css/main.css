@@ -84,10 +84,12 @@ section.start .info .social-nets {
 }
 
 section.start .info .social-nets.scroll {
-    height: 5vh;
+    height: min-content;
     position: fixed;
-    margin: 10px 0;
+    margin: 10px 20px;
     z-index: 6;
+    top: 0;
+    right: 0;
     animation: fromDown .8s ease-in-out;
 }
 
@@ -256,23 +258,14 @@ section.start nav .div-links a {
 
 section.start nav .navbar-btn {
     display: none;
-    min-height: 10vh;
     transition: 0.3s all;
-    
 }
 
 section.start nav .navbar-btn.active {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 1em;
+    height: min-content;
+    margin: 10px 20px;
+    padding: 0;
 }
-
-
-section.start nav.scroll.full .navbar-btn.active i {
-    /* transform: rotate(180deg); */
-}
-
 
 section.start nav .div-links a.active {
     /* border: 1px solid var(--color-1); */
@@ -572,15 +565,7 @@ footer .footer-vitae-dowload:hover i {
     section.experience .title {
         margin-bottom: 0 ;
     }
-
-    /* .carousel-experience-card:nth-child(2) { 
-        height: 100%;
-    } */
     
-
-   
-
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -603,22 +588,19 @@ footer .footer-vitae-dowload:hover i {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
     
-
     section.start nav.scroll {
-        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         font-size: 10px;
-        min-height: 8vh;
+    }    
+
+    section.start nav.scroll .navbar-btn.active {
+        display: inline-block;
     }
     
-
-    section.start nav.scroll .navbar-btn {
-        position: fixed;
-        width: 20vw;
-        left: 0;
-        top: 0;
-        transform: translateY(-10px);
-        align-items: center;
-        justify-content: center;
+    section.start nav.scroll .navbar-btn i {
+        padding: 0;
+        margin: 0;
     }
 
     section.start nav.scroll .navbar-btn i:nth-child(1n) {
@@ -645,13 +627,17 @@ footer .footer-vitae-dowload:hover i {
     section.start nav.scroll.full .div-links a {
         font-size: 3em;
         display: inline-block;
+        margin: 25px 0;
+        font-weight: 1000;
     }
 
     section.start nav.scroll.full {
         flex-direction: column-reverse;
+        justify-content: center;
     }
 
-    section.start nav.scroll .navbar-btn.active {
+    section.start nav.scroll.full .navbar-btn.active {
+        margin-top: 10px;
         display: flex;
     }
     section.start nav.scroll.full .navbar-btn.active {
