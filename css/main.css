@@ -84,9 +84,10 @@ section.start .info .social-nets {
 }
 
 section.start .info .social-nets.scroll {
-    height: 10vh;
+    height: 5vh;
     position: fixed;
-    z-index: 2;
+    margin: 10px 0;
+    z-index: 6;
     animation: fromDown .8s ease-in-out;
 }
 
@@ -111,7 +112,7 @@ section.start .info .social-nets.scroll {
 }
 
 section.start .info .social-nets i {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
     transition: .5s all;
 }
 
@@ -213,10 +214,14 @@ section.start nav {
 
 section.start nav.scroll {
     position: fixed;
-    background: var(--color-bg-gradient-1);
+    background: var(--color-bg);
     animation: fromUp .3s ;
     min-width: 100vw;
-    min-height: 10vh;
+    min-height: 5vh;
+
+}
+section.start nav.scroll .div-links a{
+    margin: 10px 0 ;
 
 }
 
@@ -602,6 +607,7 @@ footer .footer-vitae-dowload:hover i {
     section.start nav.scroll {
         flex-direction: column;
         font-size: 10px;
+        min-height: 8vh;
     }
     
 
@@ -616,7 +622,7 @@ footer .footer-vitae-dowload:hover i {
     }
 
     section.start nav.scroll .navbar-btn i:nth-child(1n) {
-        transform: scale(130%);
+        transform: scale(120%);
         display: flex;
     }
 
