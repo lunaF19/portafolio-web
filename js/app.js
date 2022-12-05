@@ -34,9 +34,26 @@ const btnPrev = $(".experience-container-prev")
 const btnNext = $(".experience-container-next")
 const carouselExperience = $(".carousel-experience")
 const cardCarouselExperience = $(".carousel-experience-card", true)
+let timerCarousel
+const secondsTimerCarousel = 5000
+carouselNext()
 
 btnNext.addEventListener("click", carouselNext)
 btnPrev.addEventListener("click", carouselPrev)
+
+
+for ( let card of cardCarouselExperience) {
+    card.addEventListener('click', resetTimerCarousel)
+    for (let childCard of card.children) {
+        childCard.addEventListener('click', resetTimerCarousel)
+        childCard.addEventListener('scroll', resetTimerCarousel)
+    }
+}
+
+function resetTimerCarousel() {
+    clearTimeout(timerCarousel)
+    timerCarousel = setTimeout(()=>carouselNext(), 10000 )
+}
 
 document.addEventListener('DOMContentLoaded', function (e) {
     intervalLanguaes(1)
@@ -74,14 +91,19 @@ footerVitaeDowload.addEventListener('click', function () { dowloadPdfLink.click(
 
 
 function carouselNext() {
+    clearTimeout(timerCarousel)
     const firstCard = $(".carousel-experience-card", true)[0]
     carouselExperience.insertAdjacentElement('beforeend', firstCard)
+
+    timerCarousel = setTimeout(()=>carouselNext(), secondsTimerCarousel )
 }
 
 function carouselPrev() {
+    clearTimeout(timerCarousel)
     const card = $(".carousel-experience-card", true)
     const lastCard = card[card.length - 1]
     carouselExperience.insertAdjacentElement('afterbegin', lastCard)
+    timerCarousel = setTimeout(()=>carouselNext(), secondsTimerCarousel )
 }
 
 // setInterval(() => carouselNext(), 5000)
