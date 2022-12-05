@@ -10,7 +10,7 @@
 }
 
 body::-webkit-scrollbar,
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
     display: none;
 }
 
@@ -44,6 +44,7 @@ body {
     background-position: top;
     background-size: cover;
     background-origin: border-box;
+    -webkit-background-origin: border-box;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
@@ -151,14 +152,14 @@ section.start .principal .principal-name .name-footer {
     font-size: 2em;
 }
 
-section.start .principal div .name-footer #language span{
+section.start .principal div .name-footer #language span {
     font-size: 1em;
     position: absolute;
     padding: 0 .5em;
     font-weight: 500;
 }
 
-#language span{
+#language span {
     /*position: absolute;*/
     animation: changeLanguaguesVanish 3s infinite;
 
@@ -217,13 +218,16 @@ section.start nav {
 section.start nav.scroll {
     position: fixed;
     background: var(--color-bg);
-    animation: fromUp .3s ;
+    animation: fromUp .3s;
     min-width: 100vw;
     min-height: 5vh;
+    border-bottom-left-radius: 10% ;
+    border-bottom-right-radius: 10% ;
 
 }
-section.start nav.scroll .div-links a{
-    margin: 10px 0 ;
+
+section.start nav.scroll .div-links a {
+    margin: 10px 0;
 
 }
 
@@ -287,9 +291,7 @@ section.start nav span.navbar-log.active {
     transform: translateX(100px);
 }
 
-section.whois,
-section.experience,
-section.contact {
+section:is(.whois, .experience, .contact) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,14 +299,14 @@ section.contact {
     min-height: 100vh;
 }
 
-section.whois .title,
-section.experience .title,
-section.contact .title {
+section:is(.whois, .experience, .contact) .title {
     font-family: 'Alfa Slab One', cursive;
     text-align: center;
     font-size: 4em;
     margin-top: 10vh;
-    width: 100%;
+    min-width: 30%;
+    font-weight: 500;
+    letter-spacing: 2px;
 
 }
 
@@ -375,11 +377,9 @@ section.experience :is(.experience-container-next, .experience-container-prev) i
     transform: scale(55%);
 }
 
-section.experience .experience-container-prev {
-}
+section.experience .experience-container-prev {}
 
-section.experience .experience-container-next {
-}
+section.experience .experience-container-next {}
 
 section.experience .experience-container .carousel-experience {
     display: flex;
@@ -388,23 +388,21 @@ section.experience .experience-container .carousel-experience {
     width: 100%;
     flex-direction: row;
     min-height: 100vh;
-    overflow: hidden;
 }
 
 .carousel-experience-card:nth-child(1n) {
     display: none;
-    /* transition: .5s all; */
 }
 
 .carousel-experience-card:nth-child(1),
-.carousel-experience-card:nth-child(3) { 
+.carousel-experience-card:nth-child(3) {
     display: flex;
     width: 30%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: -1;
-    filter:blur(5px) ;
+    filter: blur(6px);
 }
 
 .carousel-experience-card:nth-child(1) {
@@ -415,7 +413,7 @@ section.experience .experience-container .carousel-experience {
     right: 5%;
 }
 
-.carousel-experience-card:nth-child(2) { 
+.carousel-experience-card:nth-child(2) {
     display: flex;
     width: 40%;
     flex-direction: column;
@@ -424,21 +422,19 @@ section.experience .experience-container .carousel-experience {
     transform: scale(200%);
     z-index: 1;
     position: relative;
-    backdrop-filter: blur(2px) ;
-    -webkit-backdrop-filter: blur(2px) ;
+    transition: .2s all cubic-bezier(0.67, 0.54, 0, 0.83);
 }
 
 
-.carousel-experience-card .card-experience-img { 
-    
-}
+.carousel-experience-card .card-experience-img {}
 
-.carousel-experience-card .card-experience-title { 
+.carousel-experience-card .card-experience-title {
     font-size: 4em;
 }
-.carousel-experience-card .card-experience-paragraph{ 
- text-align: center;   
- font-weight: 700;
+
+.carousel-experience-card .card-experience-paragraph {
+    text-align: center;
+    font-weight: 700;
 }
 
 
@@ -553,8 +549,8 @@ footer .footer-vitae-dowload:hover i {
         height: 10vh;
         margin-bottom: .1em;
     }
-    
-    section.experience  {
+
+    section.experience {
         order: 1;
     }
 
@@ -563,9 +559,9 @@ footer .footer-vitae-dowload:hover i {
     }
 
     section.experience .title {
-        margin-bottom: 0 ;
+        margin-bottom: 0;
     }
-    
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -587,17 +583,17 @@ footer .footer-vitae-dowload:hover i {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
-    
+
     section.start nav.scroll {
         align-items: center;
         justify-content: flex-start;
         font-size: 10px;
-    }    
+    }
 
     section.start nav.scroll .navbar-btn.active {
         display: inline-block;
     }
-    
+
     section.start nav.scroll .navbar-btn i {
         padding: 0;
         margin: 0;
@@ -612,9 +608,25 @@ footer .footer-vitae-dowload:hover i {
         display: none;
     }
 
+    section.start nav.scroll.full {
+        flex-direction: column-reverse;
+        justify-content: center;
+        background: radial-gradient(var(--color-bg) 15%,
+                transparent 100%);
+
+    }
+
     section.start nav.scroll .div-links a,
     section.start nav.scroll .navbar-log {
         display: none;
+    }
+
+
+    section.start nav.scroll.full .div-links a {
+        font-size: 3em;
+        display: inline-block;
+        margin: 25px 0;
+        font-weight: 1000;
     }
 
     section.start nav.scroll.full .div-links {
@@ -624,23 +636,10 @@ footer .footer-vitae-dowload:hover i {
         flex-direction: column;
     }
 
-    section.start nav.scroll.full .div-links a {
-        font-size: 3em;
+
+    section.start nav.scroll.full .navbar-btn.active {
+        margin-top: 30px;
         display: inline-block;
-        margin: 25px 0;
-        font-weight: 1000;
-    }
-
-    section.start nav.scroll.full {
-        flex-direction: column-reverse;
-        justify-content: center;
-    }
-
-    section.start nav.scroll.full .navbar-btn.active {
-        margin-top: 10px;
-        display: flex;
-    }
-    section.start nav.scroll.full .navbar-btn.active {
         position: relative;
     }
 
@@ -697,7 +696,7 @@ footer .footer-vitae-dowload:hover i {
         font-size: 11px;
     }
 
-    .carousel-experience-card:nth-child(2) { 
+    .carousel-experience-card:nth-child(2) {
         transform: scale(120%);
         width: 70%;
     }
