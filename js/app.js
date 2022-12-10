@@ -120,11 +120,14 @@ function createElementsLanguages() {
         const spanLanguage = document.createElement('span')
         spanLanguage.classList.add("language-item")
         spanLanguage.innerHTML = `${language}`
+        spanLanguage.classList.add("top")
         laguageElement.appendChild(spanLanguage)
     }
 
     const languagesElements = $(".language-item", true)
     languagesElements[0].classList.add("show")
+    languagesElements[0].classList.remove("top")
+    languagesElements[1].classList.add("top")
     languagesElements[1].classList.add("top")
     languagesElements[languagesElements.length-1].classList.add("bottom")
     setTimeout(() => intervalLanguaes2(0), languagesIntervalSeconds)

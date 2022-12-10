@@ -146,42 +146,48 @@ section.start .principal .principal-name .name {
 
 section.start .principal .principal-name .name-footer {
     display: flex;
+    justify-content: flex-start;
     font-size: 2em;
 }
 
-section.start .principal div .name-footer .languages {
+section.start .principal .principal-name .name-footer .language-text {
+    display: flex;
+}
+
+section.start .principal .principal-name .name-footer .languages {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    overflow: hidden;
+    min-width: 50%;
+    /* overflow: hidden; */
 }
 
-section.start .principal div .name-footer .languages .language-item {
+section.start .principal .principal-name .name-footer .languages .language-item {
     margin-left: .3em;
     color: var(--color-1);
     transition: .5s all ease-in-out;
     position: absolute;
-    transform: translateY(-2em);
-    color: transparent; 
+    transform: translateY(-3em);
+    color: transparent;
+    overflow-wrap: normal;
 }
 
-section.start .principal div .name-footer .languages .language-item.show {
+section.start .principal .principal-name .name-footer .languages .language-item.show {
     color: white;
     transform: translateY(0);
 }
 
-section.start .principal div .name-footer .languages .language-item.top {
+section.start .principal .principal-name .name-footer .languages .language-item.top {
     transform: translateY(-3em);
 }
 
-section.start .principal div .name-footer .languages .language-item.bottom {
+section.start .principal .principal-name .name-footer .languages .language-item.bottom {
     transform: translateY(1.5em);
 }
 
 
 
-/* section.start .principal div .name-footer #language span {
+/* section.start .principal .principal-name .name-footer #language span {
     font-size: 1em;
     position: absolute;
     padding: 0 .5em;
