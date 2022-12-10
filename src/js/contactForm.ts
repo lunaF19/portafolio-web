@@ -1,6 +1,3 @@
-
-
-
 export function initContactForm(){
     const contactForm = document.querySelector("#contact-form")
 
@@ -9,9 +6,7 @@ export function initContactForm(){
     })
 }
 
-
 function onSubmit(e:SubmitEvent) {
     e.preventDefault()
     alert("Falta manejar")
-
 }
