@@ -165,10 +165,9 @@ section.start .principal .principal-name .name-footer .language-text {
 
 section.start .principal .principal-name .name-footer .languages {
   position: relative;
-  display: flex;
+  display: block;
   flex-direction: column;
-  min-width: 50%;
-  /* overflow: hidden; */
+  width: min(300px, 50%);
 }
 
 section.start
@@ -184,6 +183,7 @@ section.start
   transform: translateY(-3em);
   color: transparent;
   overflow-wrap: normal;
+  font-weight: 1000;
 }
 
 section.start
@@ -883,10 +883,19 @@ footer .footer-vitae-dowload:hover i {
   }
 
   section.start .principal .principal-anything {
-    width: 100%;
+    width: min(330px, 90%);
+    font-size: 1.5rem;
+  }
+
+  section.start .principal .principal-name {
+    width: min(330px, 100%);
+
+    .name-footer {
+      font-size: 1.1rem;
+    }
   }
 
   section.start .principal .principal-name .name {
-    font-size: 4em;
+    font-size: 3.5em;
   }
 }
