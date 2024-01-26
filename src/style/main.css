@@ -278,9 +278,9 @@ nav {
 
 nav.scroll {
   background: var(--color-bg);
-  /* animation: fromUp 0.3s; */
-  min-width: 100vw;
-  min-height: var(--navbar-height);
+  animation: fromUp 0.3s;
+  width: 100vw;
+  height: var(--navbar-height);
   border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
 }
@@ -292,10 +292,11 @@ nav.scroll .div-links a {
 nav.scroll.full {
   position: fixed;
   background-color: var(--color-bg-gradient-3);
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  transition: none;
   z-index: 2;
 }
 
@@ -316,7 +317,7 @@ nav .div-links a {
   text-align: center;
   /* transition: .3s all; */
   width: 8em;
-  z-index: 2;
+  z-index: 3;
 }
 
 nav .navbar-btn {
@@ -361,7 +362,7 @@ section:is(.whois, .experience, .contact) {
 section:is(.whois, .experience, .contact) .title {
   font-family: "Alfa Slab One", cursive;
   text-align: center;
-  font-size: 4em;
+  font-size: 2rem;
   margin-top: 10vh;
   min-width: 30%;
   font-weight: 500;
@@ -389,7 +390,7 @@ section.whois .whois-container .text {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5em;
+  font-size: 1.5rem;
   text-align: center;
 }
 
